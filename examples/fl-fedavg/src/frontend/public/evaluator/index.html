@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="#" />
+    <title>Evaluator</title>
+    <script src="/config.js"></script>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <h4 id="flat" style="display: none">
+      FLAT: Federated Learning Across Tabs
+    </h4>
+    <h1>Evaluator</h1>
+    <div id="gui" style="display: none">
+      <div>
+        <div class="tabs">
+          <button id="btn0" class="active" onclick="changeTab(0)">
+            Accuracy & Loss
+          </button>
+          <button id="btn1" onclick="changeTab(1)">Try inference</button>
+        </div>
+        <div id="tab0">
+          <div style="display: none" id="stats">
+            <div class="canvas-container">
+              <button id="button1" onclick="roundAccuracyChart.resetZoom()">
+                Reset Zoom
+              </button>
+              <div>
+                <canvas id="roundAccuracy" width="400" height="200"></canvas>
+              </div>
+            </div>
+            <br />
+            <div class="canvas-container">
+              <button id="button1" onclick="roundLossChart.resetZoom()">
+                Reset Zoom
+              </button>
+              <div>
+                <canvas id="roundLoss" width="400" height="200"></canvas>
+              </div>
+            </div>
+            <div class="button-container">
+              <button id="button1" onclick="exportJSON()">Export JSON</button>
+              <button id="button2" onclick="exportCSV()">Export CSV</button>
+            </div>
+          </div>
+        </div>
+        <div id="tab1" class="hidden">
+          <canvas
+            id="inferenceCanvas"
+            width="400"
+            height="400"
+            style="border: 1px solid #000"
+          ></canvas>
+          <div class="button-container">
+            <button onclick="inference()">Get prediction</button>
+            <button onclick="clearCanvas()">Clear</button>
+          </div>
+          <p>Prediction: <span id="prediction"></span></p>
+          <div id="inferenceHistory"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="/libraries/kleint-min.js"></script>
+  <script src="assets/js/roundStats.js"></script>
+  <script src="assets/js/draw.js"></script>
+
+  <script src="index.js"></script>
+</html>
