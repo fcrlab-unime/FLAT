@@ -1,0 +1,41 @@
+networks:
+  flat-net:
+    name: flat-net
+    driver: bridge
+
+services:
+  webserver:
+    container_name: webserver
+    image: nginx
+    ports:
+      - "31013:31013"
+    volumes:
+      - ../../config.js:/usr/share/nginx/html/config.js
+      - ../../extra/nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ../../examples/fl-fedavg/src/frontend/public/index.html:/usr/share/nginx/html/index.html
+      - ../../extra/kleint:/usr/share/nginx/html/libraries
+      - ../../examples/fl-fedavg/src/frontend/public:/usr/share/nginx/html/fl-fedavg/web
+    networks:
+      - flat-net
+  datasets-server:
+    container_name: datasets-server
+    image: ghcr.io/fcrlab-unime/flat-datasets-server:latest
+    volumes:
+      - ../../extra/datasets-server/server/server.py:/app/server.py
+      - ../../datasets/config.yml:/app/config.yml
+      - ../../datasets/download:/app/datasets
+      - ../../datasets/loaders:/app/loaders
+    networks:
+      - flat-net
+  kleint-gateway:
+    container_name: kleint-gateway
+    image: ghcr.io/fcrlab-unime/kleint-gateway:latest
+    ports:
+      - "13579:13579"
+      - "11355:11355"
+    networks:
+      - flat-net
+    volumes:
+      - ../../examples/fl-fedavg/vpods.yml:/app/virtualpods/vpods.yml
+      - ../../examples/fl-fedavg/dist/microservices:/app/virtualpods
+      - ../../examples/fl-fedavg/dist/models:/app/virtualpods/client/models

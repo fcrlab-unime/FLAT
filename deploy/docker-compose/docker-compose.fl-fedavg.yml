@@ -1,0 +1,21 @@
+networks:
+  flat-net:
+    name: flat-net
+    driver: bridge
+
+services:
+  client:
+    container_name: client
+    image: ghcr.io/fcrlab-unime/kleint-virtualpod:latest
+    networks:
+      - flat-net
+  aggregator:
+    container_name: aggregator
+    image: ghcr.io/fcrlab-unime/kleint-virtualpod:latest
+    networks:
+      - flat-net
+  evaluator:
+    container_name: evaluator
+    image: ghcr.io/fcrlab-unime/kleint-virtualpod:latest
+    networks:
+      - flat-net
