@@ -1,0 +1,1 @@
+[{"name": "fc1.weight", "shape": [200, 784]}, {"name": "fc1.bias", "shape": [200]}, {"name": "fc2.weight", "shape": [200, 200]}, {"name": "fc2.bias", "shape": [200]}, {"name": "fc3.weight", "shape": [10, 200]}, {"name": "fc3.bias", "shape": [10]}]
