@@ -116,7 +116,7 @@ Make sure to meet these requirements before proceeding with building and running
 
     <pre lang="bash"> make models </pre>
 
-    To change or build your own models see [Build Models](https://github.com/fcrlab-unime/FLAT/examples/fl-fedavg/models).
+    To change or build your own models see [Build Models](https://github.com/fcrlab-unime/FLAT/tree/main/examples/fl-fedavg/src/models).
 
 ### Deploy the platform
 
