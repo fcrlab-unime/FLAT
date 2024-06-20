@@ -1,0 +1,178 @@
+:root {
+  --main-bg-color: #0a0e25;
+  --main-text-color: #ffffff;
+  --accent-color: #00ccff;
+  --accent-color-darker: #1d2138;
+  --dark-grey: #1f1f1f;
+  --button-bg-color: #2a2a2a;
+  --button-text-color: #ffffff;
+  --input-bg-color: #1f1f1f;
+  --input-border-color: #ccc;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--main-bg-color);
+  color: var(--main-text-color);
+  margin: 0;
+  padding: 5px;
+  padding-bottom: 50px;
+}
+
+h1 {
+  color: var(--accent-color);
+  text-align: center;
+}
+
+#flat {
+  text-align: center;
+}
+
+#form {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: var(--accent-color-darker);
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  margin-bottom: 20px;
+}
+
+#form>div {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+#form>div>div.columns {
+  column-width: 160px;
+  column-gap: 30px;
+  flex: 1;
+}
+
+#form>div>div.columns>* {
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+#form p {
+  text-align: center;
+  font-style: italic;
+}
+
+#form div {
+  margin-bottom: 5px;
+}
+
+#form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+#form button {
+  max-width: 120px;
+  height: 45px;
+  width: 70px;
+  padding: 0;
+}
+
+#form input[type="number"],
+#form input[type="text"],
+#form select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid var(--accent-color);
+  box-sizing: border-box;
+  margin-top: 3px;
+  margin-bottom: 10px;
+  background-color: var(--input-bg-color);
+  color: var(--main-text-color);
+}
+
+button {
+  width: 100%;
+  background-color: var(--accent-color);
+  color: var(--dark-grey);
+  padding: 14px 20px;
+  font-weight: 600;
+  font-size: 16px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  max-width: 600px;
+  margin: auto;
+}
+
+.button-container button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  max-width: 180px;
+}
+
+.button-container button:hover {
+  background-color: #0056b3;
+}
+
+button:hover {
+  background-color: #2e75c0;
+}
+
+.canvas-container {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  max-width: 750px;
+  margin: auto;
+  width: 100%;
+  position: relative;
+}
+
+.canvas-container>button {
+  position: absolute;
+  right: 20px;
+  top: 40px;
+  max-width: 110px;
+  padding: 5px;
+}
+
+.canvas-container>div {
+  display: flex;
+}
+
+canvas {
+  border: 3px solid var(--accent-color-darker);
+  border-radius: 5px;
+  max-width: 1400px;
+  max-height: 400px;
+  margin: 5px;
+  display: block;
+  width: 100%;
+  height: 400px;
+}
+
+.canvas-container {
+  margin-bottom: 10px;
+}
+
+.canvas-container button {
+  margin-top: 5px;
+}
+
+div.defaultValues {
+  color: #999 !important;
+  text-align: center;
+  margin-bottom: 10px;
+}

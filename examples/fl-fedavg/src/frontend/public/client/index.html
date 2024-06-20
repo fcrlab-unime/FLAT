@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="#" />
+    <title>Client</title>
+    <script src="/config.js"></script>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <h4 id="flat" style="display: none">
+      FLAT: Federated Learning Across Tabs
+    </h4>
+    <h1>Client</h1>
+    <div id="gui" style="display: none">
+      <div class="defaultValues">
+        Current default values -> Dataset type:
+        <span id="defaultDatasetType">balanced</span> - ChunkSize:
+        <span id="defaultChunkSize">1000</span> - BatchSize:
+        <span id="defaultBatchSize">64</span>
+      </div>
+      <form id="form">
+        <p><i>This values can be overriden by the aggregator</i></p>
+        <div>
+          <div class="columns">
+            <div>
+              <label for="datasetType">Dataset type</label>
+              <select id="datasetType" name="datasetType">
+                <option value="balanced">Balanced</option>
+                <option value="unbalanced">Unbalanced</option>
+              </select>
+            </div>
+            <div>
+              <label for="chunkSize">Chunk size</label>
+              <input
+                type="number"
+                id="chunkSize"
+                name="chunkSize"
+                value="1000"
+                min="1"
+              />
+            </div>
+            <div>
+              <label for="batchSize">Batch size</label>
+              <input
+                type="number"
+                id="batchSize"
+                name="batchSize"
+                value="64"
+                min="1"
+              />
+            </div>
+          </div>
+          <button
+            id="setParamsButton"
+            onclick="setDefaultParams()"
+            type="button"
+          >
+            Set
+          </button>
+        </div>
+      </form>
+      <div id="stats" style="display: none">
+        <div class="canvas-container">
+          <button id="button1" onclick="roundLossChart.resetZoom()">
+            Reset Zoom
+          </button>
+          <div>
+            <canvas id="roundLoss" width="400" height="200"></canvas>
+          </div>
+        </div>
+        <br />
+        <div class="canvas-container">
+          <button id="button1" onclick="epochLossChart.resetZoom()">
+            Reset Zoom
+          </button>
+          <div>
+            <canvas id="epochLoss" width="400" height="200"></canvas>
+          </div>
+        </div>
+        <div class="button-container">
+          <button id="button1" onclick="exportJSON()">Export JSON</button>
+          <button id="button2" onclick="exportCSV()">Export CSV</button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="/libraries/kleint-min.js"></script>
+  <script src="assets/js/loss.js"></script>
+  <script src="index.js"></script>
+</html>
