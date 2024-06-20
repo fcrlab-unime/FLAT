@@ -16,9 +16,7 @@ FLAT (Federated Learning Across Tabs) is an advanced system designed to enable F
     * [Demo](#demo)
 * [Extra](#extra)
     * [Contributing](#contributing)
-    * [Cite this work](#cite-this-work)
     * [License](#license)
-    * [Contact](#contact)
 
 ## Overview
 
@@ -202,7 +200,7 @@ http://<node-ip>:31013/fl-fedavg/web/evaluator
 
 ### Contributing
 
-Contributions to the Federated Learning Web Platform are welcome! To contribute:
+Contributions to FLAT are welcome! To contribute:
 
 1. Fork the repository.
 2. Create a new branch for your feature or bug fix.
@@ -210,24 +208,6 @@ Contributions to the Federated Learning Web Platform are welcome! To contribute:
 4. Push your changes to your fork.
 5. Submit a pull request to the main repository.
 
-### Cite this work
-
-```
-@inproceedings{FLAT,
-  title={Web-Centric Federated Learning over the Cloud-Edge Continuum Leveraging ONNX and WASM},
-  booktitle={IEEE 29th IEEE Symposium on Computers and Communications (ISCC2024), June 26--29, 2024, Paris, France}, 
-  author={Garofalo, Marco and Colosi, Mario and Catalfamo, Alessio and Villari, Massimo},
-  volume={},
-  number={},
-  year={2024},
-  doi={},
-}
-```
-
 ### License
 
 This project is licensed under the GPL-3.0 License - see the [LICENSE](LICENSE) file for details.
-
-### Contact
-
-For questions or support, please contact [projectmaintainer@example.com](mailto:projectmaintainer@example.com).
