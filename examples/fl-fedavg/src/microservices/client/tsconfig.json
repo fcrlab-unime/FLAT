@@ -1,0 +1,17 @@
+{
+	"compilerOptions": {
+		"esModuleInterop": true,
+		"jsx": "react-jsx",
+		"noImplicitAny": false,
+		"module": "ES2020",
+		"downlevelIteration": true,
+		"moduleResolution": "bundler",
+	},
+	"include": [
+		"src"
+	],
+	"exclude": [
+		// "client.ts",
+		"App.tsx"
+	]
+}
