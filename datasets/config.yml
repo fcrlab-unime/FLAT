@@ -1,0 +1,15 @@
+datasets:
+  - name: mnist
+    loader: mnist_dataset
+    dataset_dir: datasets/mnist
+    dataset_length: 60000
+    chunk_sizes: [2, 600, 1000, 2000]
+    test_chunk_sizes: [10000]
+    shape: [784]
+  - name: cifar10
+    loader: cifar10_dataset
+    dataset_dir: datasets/cifar10
+    dataset_length: 50000
+    chunk_sizes: [2, 500, 1000, 2000]
+    test_chunk_sizes: [10000]
+    shape: [3, 32, 32]
