@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLAT: Federated Learning Across Tabs</title>
+    <style>
+        :root {
+            --main-bg-color: #0a0e25;
+            --main-text-color: #ffffff;
+            --accent-color: #00ccff;
+            --accent-color-darker: #1d2138;
+            --accent-color-lighter: #33d1ff;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--main-bg-color);
+            color: var(--main-text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            color: var(--accent-color);
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .example-container {
+            background-color: var(--accent-color-darker);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+            text-align: center;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .example-container h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+
+        .button-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .button-container a {
+            text-decoration: none;
+            color: var(--accent-color-darker);
+            background-color: var(--accent-color);
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            width: 150px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .button-container a:hover {
+            background-color: var(--accent-color-lighter);
+        }
+    </style>
+</head>
+<body>
+    <h1>FLAT: Federated Learning Across Tabs</h1>
+    <div class="example-container">
+        <h2>FedAvg</h2>
+        <div class="button-container">
+            <a href="/fl-fedavg/web/client" target="_blank">CLIENT</a>
+            <a href="/fl-fedavg/web/aggregator" target="_blank">AGGREGATOR</a>
+            <a href="/fl-fedavg/web/evaluator" target="_blank">EVALUATOR</a>
+        </div>
+    </div>
+</body>
+</html>
