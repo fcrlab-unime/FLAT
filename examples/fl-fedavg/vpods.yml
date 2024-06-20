@@ -1,0 +1,37 @@
+sessions:
+  - name: client
+    containers:
+      - name: client
+        network: cec
+        image: virtualpod
+        source: client/bundle.js
+        launcher: JSModule
+        environment:
+          AGGREGATOR_URL: http://aggregator/aggregate
+          MODEL_SERVER: "models"
+        reachableVPods:
+          - aggregator
+  - name: aggregator
+    limitConnections: 1
+    containers:
+      - name: aggregator
+        network: cec
+        image: virtualpod
+        source: aggregator/aggregator.js
+        launcher: Javascript
+        reachableVPods:
+          - kleint-gateway
+          - client
+          - evaluator
+  - name: evaluator
+    containers:
+      - name: evaluator
+        network: cec
+        image: virtualpod
+        source: evaluator/bundle.js
+        launcher: JSModule
+        environment:
+          MODEL_SERVER: "models"
+        reachableVPods:
+          - aggregator
+        resourcesUrl: resources/client
