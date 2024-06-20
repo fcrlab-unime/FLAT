@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="#" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="/config.js"></script>
+    <title>Aggregator</title>
+  </head>
+  <body>
+    <h4 id="flat" style="display: none">
+      FLAT: Federated Learning Across Tabs
+    </h4>
+    <h1>Aggregator</h1>
+    <div id="gui" style="display: none">
+      <form action="#" id="configForm" onsubmit="event.preventDefault();">
+        <div class="collapsible-header" onclick="toggleForm()">
+          <span>Configuration</span>
+          <svg class="collapsible-icon" viewBox="0 0 24 24">
+            <path
+              d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"
+            ></path>
+          </svg>
+        </div>
+        <div class="open" id="configDiv">
+          <div>
+            <label for="dataset">Dataset:</label>
+            <select id="dataset" name="dataset">
+              <option value="mnist">MNIST</option>
+              <option value="cifar10">CIFAR-10</option>
+            </select>
+          </div>
+          <div>
+            <label for="distribution">Force distribution:</label>
+            <select id="distribution" name="distribution">
+              <option value="">- None -</option>
+              <option value="iid">IID</option>
+              <option value="non-iid">Pathological non-IID</option>
+            </select>
+          </div>
+          <div>
+            <label for="chunkSize">Chunk size:</label>
+            <input type="number" id="chunkSize" name="chunkSize" value="600" min="1" />
+          </div>
+          <div>
+            <label for="batchSize">Batch size:</label>
+            <input type="number" id="batchSize" name="batchSize" value="64" min="1" />
+          </div>
+          <div>
+            <label for="clientNums">N. clients:</label>
+            <input
+              type="number"
+              id="clientNums"
+              name="clientNums"
+              value="5"
+              min="1"
+            />
+          </div>
+          <div>
+            <label for="minClientNums">Minimum n. clients:</label>
+            <input
+              type="number"
+              id="minClientNums"
+              name="minClientNums"
+              value="1"
+              min="1"
+            />
+          </div>
+          <div>
+            <label for="fraction">Fraction:</label>
+            <input
+              type="number"
+              step="0.1"
+              id="fraction"
+              min="0.1"
+              max="1"
+              name="fraction"
+              value="1"
+            />
+          </div>
+          <div>
+            <label for="initTimeout">Client init timeout (s):</label>
+            <input
+              type="number"
+              id="initTimeout"
+              name="initTimeout"
+              value="5"
+              min="1"
+            />
+          </div>
+          <div>
+            <label for="trainTimeout">Client train timeout (s):</label>
+            <input
+              type="number"
+              id="trainTimeout"
+              name="trainTimeout"
+              value="20"
+              min="1"
+            />
+          </div>
+          <div>
+            <label for="roundTimeout">Round timeout (s):</label>
+            <input
+              type="number"
+              id="roundTimeout"
+              name="roundTimeout"
+              value="30"
+              min="1"
+            />
+          </div>
+          <div>
+            <label for="numEpochs">Number of epochs:</label>
+            <input type="number" id="numEpochs" name="numEpochs" value="1" min="1" />
+          </div>
+          <div>
+            <label for="numRounds">Number of rounds:</label>
+            <input type="number" id="numRounds" name="numRounds" value="500" min="1" />
+          </div>
+        </div>
+        <div class="actions">
+          <button
+            class="disabled"
+            disabled
+            id="startButton"
+            onclick="startTraining()"
+          >
+            Start
+          </button>
+          <button
+            class="disabled"
+            disabled
+            id="pauseButton"
+            onclick="pauseTraining()"
+            type="button"
+          >
+            Pause
+          </button>
+          <button
+            class="disabled"
+            disabled
+            id="resetButton"
+            onclick="resetTraining()"
+            type="button"
+          >
+            Reset
+          </button>
+        </div>
+      </form>
+      <div id="log">Server is starting...</div>
+      <div id="infoDiv">
+        <div>
+          <h3>ROUND</h3>
+          <div id="round"><h1>-</h1></div>
+        </div>
+
+        <div>
+          <h3>Active Clients <span id="currentClientsNum"></span></h3>
+          <div id="currentClients"><p>-</p></div>
+        </div>
+
+        <div>
+          <h3>Total Clients <span id="totalClientsNum"></span></h3>
+          <div id="totalClients"><p>-</p></div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="/libraries/kleint-min.js"></script>
+  <script src="assets/js/form.js"></script>
+  <script src="assets/js/train.js"></script>
+  <script src="index.js"></script>
+</html>
