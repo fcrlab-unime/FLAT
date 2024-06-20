@@ -1,0 +1,6 @@
+node_modules
+.DS_Store
+datasets/download/*
+!datasets/download/README.md
+__pycache__
+
