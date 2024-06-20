@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: flat
+  labels:
+    app: datasets-server
+  name: datasets-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: datasets-server
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: datasets-server
+    spec:
+      containers:
+        - image: ghcr.io/fcrlab-unime/flat-datasets-server:latest
+          name: datasets-server
+          volumeMounts:
+            - mountPath: /app/loaders
+              subPath: loaders
+              name: datasets-volume
+            - mountPath: /app/datasets
+              subPath: download
+              name: datasets-volume
+            - mountPath: /app/config.yml
+              subPath: config.yml
+              name: datasets-volume
+            - mountPath: /app/server.py
+              subPath: server.py
+              name: server-volume
+      restartPolicy: Always
+      volumes:
+        - name: datasets-volume
+          persistentVolumeClaim:
+            claimName: datasets-pvc
+        - name: server-volume
+          persistentVolumeClaim:
+            claimName: datasets-server-pvc
+      nodeSelector:
+        kubernetes.io/arch: amd64
+        kubernetes.io/hostname: <node-hostname>

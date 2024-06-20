@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: flat
+  labels:
+    app: evaluator
+  name: evaluator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: evaluator
+  template:
+    metadata:
+      labels:
+        app: evaluator
+    spec:
+      containers:
+        - image: ghcr.io/fcrlab-unime/kleint-virtualpod:latest
+          name: evaluator
+      restartPolicy: Always
+      nodeSelector:
+        kubernetes.io/arch: amd64

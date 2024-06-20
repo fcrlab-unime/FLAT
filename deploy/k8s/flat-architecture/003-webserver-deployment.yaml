@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: flat
+  name: webserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webserver
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: webserver
+    spec:
+      containers:
+        - image: nginx
+          name: webserver
+          ports:
+            - containerPort: 80
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /usr/share/nginx/html/config.js
+              name: webserver-cm0
+              subPath: config.js
+            - mountPath: /etc/nginx/conf.d/default.conf
+              name: webserver-cm1
+              subPath: default.conf
+            - mountPath: /usr/share/nginx/html/index.html
+              name: webserver-cm2
+              subPath: index.html
+            - mountPath: /usr/share/nginx/html/libraries
+              name: kleint-volume
+            - mountPath: /usr/share/nginx/html/fl-fedavg/web
+              name: frontend-volume
+      restartPolicy: Always
+      volumes:
+        - configMap:
+            items:
+              - key: config.js
+                path: config.js
+            name: webserver-cm0
+          name: webserver-cm0
+        - configMap:
+            items:
+              - key: default.conf
+                path: default.conf
+            name: webserver-cm1
+          name: webserver-cm1
+        - configMap:
+            items:
+              - key: index.html
+                path: index.html
+            name: webserver-cm2
+          name: webserver-cm2
+        - name: kleint-volume
+          persistentVolumeClaim:
+            claimName: kleint-pvc
+        - name: frontend-volume
+          persistentVolumeClaim:
+            claimName: frontend-pvc
+      nodeSelector:
+        kubernetes.io/arch: amd64
+        kubernetes.io/hostname: <node-hostname>

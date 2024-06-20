@@ -1,0 +1,63 @@
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: microservices-pv
+  namespace: flat
+spec:
+  accessModes:
+    - ReadWriteMany
+  capacity:
+    storage: 500Mi
+  storageClassName: local-path
+  hostPath:
+    path: /opt/onnx_fl/examples/fl-fedavg/dist/microservices
+  persistentVolumeReclaimPolicy: Retain
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: microservices-pvc
+  namespace: flat
+spec:
+  volumeName: microservices-pv
+  storageClassName: local-path
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 500Mi
+
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: models-pv
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: local-path
+  capacity:
+    storage: 1Gi
+  hostPath:
+    path: /opt/onnx_fl/examples/fl-fedavg/dist/models
+  persistentVolumeReclaimPolicy: Retain
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: models-pvc
+  namespace: flat
+spec:
+  volumeName: models-pv
+  storageClassName: local-path
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi

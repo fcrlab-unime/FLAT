@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: flat
+  name: kleint-gateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kleint-gateway
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: kleint-gateway
+    spec:
+      containers:
+        - image: ghcr.io/fcrlab-unime/kleint-gateway:latest
+          name: kleint-gateway
+          ports:
+            - containerPort: 13579
+              protocol: TCP
+            - containerPort: 11355
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /app/virtualpods/vpods.yml
+              name: kleint-gateway-cm0
+              subPath: vpods.yml
+            - mountPath: /app/virtualpods
+              name: microservices-volume
+            - mountPath: /app/virtualpods/client/models
+              name: models-volume
+      restartPolicy: Always
+      volumes:
+        - configMap:
+            items:
+              - key: vpods.yml
+                path: vpods.yml
+            name: kleint-gateway-cm0
+          name: kleint-gateway-cm0
+        - name: microservices-volume
+          persistentVolumeClaim:
+            claimName: microservices-pvc
+        - name: models-volume
+          persistentVolumeClaim:
+            claimName: models-pvc
+      nodeSelector:
+        kubernetes.io/arch: amd64
+        kubernetes.io/hostname: <node-hostname>

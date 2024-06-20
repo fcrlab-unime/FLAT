@@ -1,0 +1,61 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: kleint-pv
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: local-path
+  capacity:
+    storage: 1Gi
+  hostPath:
+    path: /opt/onnx_fl/extra/kleint
+  persistentVolumeReclaimPolicy: Retain
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: kleint-pvc
+  namespace: flat
+spec:
+  volumeName: kleint-pv
+  storageClassName: local-path
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: frontend-pv
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: local-path
+  capacity:
+    storage: 1Gi
+  hostPath:
+    path: /opt/onnx_fl/examples/fl-fedavg/src/frontend/public
+  persistentVolumeReclaimPolicy: Retain
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: frontend-pvc
+  namespace: flat
+spec:
+  volumeName: frontend-pv
+  storageClassName: local-path
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi

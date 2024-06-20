@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: flat
+  labels:
+    app: aggregator
+  name: aggregator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aggregator
+  template:
+    metadata:
+      labels:
+        app: aggregator
+    spec:
+      containers:
+        - image: ghcr.io/fcrlab-unime/kleint-virtualpod:latest
+          name: aggregator
+      restartPolicy: Always
+      nodeSelector:
+        kubernetes.io/arch: amd64

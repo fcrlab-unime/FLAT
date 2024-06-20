@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: flat
+  labels:
+    app: webserver
+  name: webserver
+spec:
+  type: NodePort
+  ports:
+    - protocol: TCP
+      nodePort: 31013
+      port: 31013
+      targetPort: 31013
+  selector:
+    app: webserver

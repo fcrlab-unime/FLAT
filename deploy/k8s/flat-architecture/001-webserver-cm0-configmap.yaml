@@ -1,0 +1,14 @@
+apiVersion: v1
+data:
+  config.js: |-
+    const kleintGateway = "172.17.2.68:30003";
+    const scriptLoadDelay = 100; //ms
+kind: ConfigMap
+metadata:
+  annotations:
+    use-subpath: "true"
+  creationTimestamp: null
+  labels:
+    app: webserver
+  name: webserver-cm0
+  namespace: flat

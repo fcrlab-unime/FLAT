@@ -1,0 +1,34 @@
+apiVersion: v1
+data:
+  default.conf: |
+    server {
+        listen       31013;
+        listen  [::]:31013;
+
+        location ^~ /dataset {
+            proxy_pass http://datasets-server;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+        }
+
+        location  / {
+            root   /usr/share/nginx/html;
+            index  index.html index.htm;
+        }
+
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   /usr/share/nginx/html;
+        }
+    }
+kind: ConfigMap
+metadata:
+  annotations:
+    use-subpath: "true"
+  creationTimestamp: null
+  labels:
+    app: webserver
+  name: webserver-cm1
+  namespace: flat

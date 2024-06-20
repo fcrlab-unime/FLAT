@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: flat
+  labels:
+    app: kleint-gateway-service
+  name: kleint-gateway
+spec:
+  ports:
+    - protocol: TCP
+      port: 11355
+      targetPort: 11355
+  selector:
+   app: kleint-gateway
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: flat
+  labels:
+    app: kleint-gateway-nodeport
+  name: kleint-gateway-nodeport
+spec:
+  type: NodePort
+  ports:
+    - protocol: TCP
+      nodePort: 30003
+      port: 13579
+      targetPort: 13579
+  selector:
+   app: kleint-gateway
