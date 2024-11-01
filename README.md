@@ -22,7 +22,7 @@ FLAT (Federated Learning Across Tabs) is an advanced system designed to enable F
 
 ### Publications
 
-- M. Garofalo, M. Colosi, A. Catalfamo, and M. Villari. **Web-Centric Federated Learning over the Cloud-Edge Continuum Leveraging ONNX and WASM.** In *IEEE 29th IEEE Symposium on Computers and Communications (ISCC2024), June 26--29, 2024, Paris, France.* doi: TBA
+- M. Garofalo, M. Colosi, A. Catalfamo, and M. Villari. **Web-Centric Federated Learning over the Cloud-Edge Continuum Leveraging ONNX and WASM.** In *IEEE 29th IEEE Symposium on Computers and Communications (ISCC2024), June 26--29, 2024, Paris, France.* doi: [https://doi.org/10.1109/ISCC61673.2024.10733614](https://doi.org/10.1109/ISCC61673.2024.10733614)
 
 Related work:
 - M. Colosi, M. Garofalo, A. Galletta, M. Fazio, A. Celesti, and M. Villari. 2024. **Cloud-Edge-Client Continuum: Leveraging Browsers as Deployment Nodes with Virtual Pods**. In Proceedings of the *IEEE/ACM 10th International Conference on Big Data Computing, Applications and Technologies (BDCAT '23)*. [https://doi.org/10.1145/3632366.3632395](https://doi.org/10.1145/3632366.3632395)
